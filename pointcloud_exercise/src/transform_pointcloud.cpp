@@ -163,7 +163,7 @@ private:
         // - Info: In your setup the camera looks down to a conveyor belt.
         // - Task: Create a for loop to the identify point cloud indices that has normals with a high "z" components and store them in flot_region_indices
         for (int i = 0; i <= cloud_normals->point.size(); i++) {
-            if (cloud_normals->points[i].normal_z == 1.0) { // Maybe add a tolerance here so it doesn't have to be exactly perpendicular to the camera to count
+            if (cloud_normals->points[i].normal_z == 0.8) { // Maybe add a tolerance here so it doesn't have to be exactly perpendicular to the camera to count
                 flat_region_indices->indices.push_back(static_cast<int>(i));
             }
         }
