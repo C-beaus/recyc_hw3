@@ -105,8 +105,11 @@ private:
         // HW3-related
         //...
         // - Set the model type for detecting planes
+        seg.setModelType (pcl::SACMODEL_PLANE);
         // - Set the RAMSAC method for model identification.
+        seg.setMethodType (pcl::SAC_RANSAC);
         // - Set a distance threshold to group the points on the same plane.
+        seg.setDistanceThreshold (0.01);
         //...
 
         seg.setInputCloud(cloud_in);
@@ -141,9 +144,13 @@ private:
         //  Task: Calculate normals for the point cloud.
         //  Tips:
         // - The input point cloud is cloud_in 
+        ne.setInputCloud (cloud_in);
         // - You will need to use the search method "tree"
+        ne.setSearchMethod (tree);
         // - You will need to set the sphere radius for calculating normals on the object surface.
+        ne.setRadiusSearch (0.03);
         // - output the result to "cloud_normals"
+        ne.compute (*cloud_normals);
         //...
 
 
